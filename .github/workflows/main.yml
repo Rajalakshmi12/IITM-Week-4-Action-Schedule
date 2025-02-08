@@ -1,17 +1,23 @@
-name: Master
+name: Action runs everyday
 on:
-  push:
-    branches:
-      - master
   schedule:
-    - cron: '50 21 * * 6'
-  workflow_dispatch:  # 🔹 This allows manual execution
+    - cron: '30 10 * * *' #runs everyday at certain hour and minute 
+  workflow_dispatch:  # 🔹 This allows manual execution, I have used this only to test without waiting until automation trigger time
 
 jobs:
-  build:
+  commit: #Since commit is the action in this workflow
     runs-on: ubuntu-latest
+    
     steps:
-    - uses: actions/checkout@v1
-    - name: Running
+    - name: Checkout Repository 
+      uses: actions/checkout@v1
+    
+    - name: Add commit (by 23ds3000149@ds.study.iitm.ac.in)
       run: |
-        echo "Running!"
+        echo "This commit runs everyday at certain time and automated through Workflows in Github!"
+        git config --global user.name "GitHub Actions Bot"
+        git config --global user.email "23ds3000149@ds.study.iitm.ac.in"
+        git add .
+        git commit -m "Automated daily commit - $(date)"
+        git push
+
