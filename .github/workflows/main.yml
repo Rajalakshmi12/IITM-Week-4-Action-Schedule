@@ -7,8 +7,6 @@ on:
     - cron: '50 21 * * 6'
   workflow_dispatch:  # 🔹 This allows manual execution
 
-
-    
 jobs:
   build:
     runs-on: ubuntu-latest
