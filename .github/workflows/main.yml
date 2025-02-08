@@ -1,7 +1,7 @@
 name: Action runs everyday
 on:
   schedule:
-    - cron: '10 22 * * *' #runs everyday at certain hour and minute 
+    - cron: '18 22 * * *' #runs everyday at certain hour and minute 
   workflow_dispatch:  # 🔹 This allows manual execution, I have used this only to test without waiting until automation trigger time
 
 jobs:
@@ -11,6 +11,10 @@ jobs:
     steps:
     - name: Checkout Repository 
       uses: actions/checkout@v4
+
+    - name: Set up Git authentication to avoid error 128
+      run:
+        echo "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com" > ~/.git-credentials
     
     - name: Making a change in order to avoid empty commit
       run: |
