@@ -12,6 +12,10 @@ jobs:
     - name: Checkout Repository 
       uses: actions/checkout@v4
     
+    - name: Making a change in order to avoid empty commit
+      run: |
+        echo "Automated commit on $(date)" >> daily_commit_iitm_raji.log  # Appends to the log file
+        
     - name: Add commit (by 23ds3000149@ds.study.iitm.ac.in)
       run: |
         echo "This commit runs everyday at certain time and automated through Workflows in Github!"
