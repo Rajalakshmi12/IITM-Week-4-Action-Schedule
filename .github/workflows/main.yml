@@ -1,7 +1,7 @@
 name: Action runs everyday
 on:
   schedule:
-    - cron: '30 10 * * *' #runs everyday at certain hour and minute 
+    - cron: '07 22 * * *' #runs everyday at certain hour and minute 
   workflow_dispatch:  # 🔹 This allows manual execution, I have used this only to test without waiting until automation trigger time
 
 jobs:
